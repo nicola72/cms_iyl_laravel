@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersCmsTable extends Migration
+class CreateUserCmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsersCmsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_cms', function (Blueprint $table) {
+        Schema::create('user_cms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
@@ -31,6 +31,6 @@ class CreateUsersCmsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_cms');
+        Schema::dropIfExists('user_cms');
     }
 }

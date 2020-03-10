@@ -78,7 +78,7 @@ return [
 
         'users_cms' => [
             'driver' => 'eloquent',
-            'model' => App\UserCms::class,
+            'model' => App\Model\Cms\UserCms::class,
         ],
 
         // 'users' => [
