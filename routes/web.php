@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 //Queste sono le route del PANELLO
@@ -34,8 +34,10 @@ Route::group(['prefix' => 'cms'], function ()
     });
 
     Route::get('/login', 'Cms\Auth\LoginController@showLoginForm')->name('cms.login');
-    Route::post('/login','Cms\Auth\LoginController@login');
+    Route::post('/login','Cms\Auth\LoginController@login')->name('cms.login');
+    Route::get('/logout', 'Cms\Auth\LoginController@logout')->name('cms.logout');
     Route::get('/register','Cms\Auth\RegisterController@showRegistrationForm')->name('cms.register');
     Route::post('/register','Cms\Auth\RegisterController@register');
+    Route::get('/password/reset','Cms\Auth\ForgotPasswordController@showLinkRequestForm')->name('cms.password.request');
 
 });

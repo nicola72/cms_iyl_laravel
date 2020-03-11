@@ -43,10 +43,14 @@ class RegisterController extends Controller
     /**
      * Show the application registration form.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function showRegistrationForm()
     {
+        if(\Request::ip() != '94.89.6.74' && \Request::ip() != '127.0.0.1')
+        {
+            return redirect($this->redirectTo);
+        }
         return view('cms.auth.register');
     }
 
@@ -69,10 +73,14 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\User|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     protected function create(array $data)
     {
+        if(\Request::ip() != '94.89.6.74' && \Request::ip() != '127.0.0.1')
+        {
+            return redirect($this->redirectTo);
+        }
         return UserCms::create([
             'name' => $data['name'],
             'email' => $data['email'],
